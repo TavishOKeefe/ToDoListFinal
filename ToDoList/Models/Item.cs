@@ -5,12 +5,24 @@ namespace ToDoList.Models
   public class Item
   {
     private string _description;
+    private int _id;
     private static List<Item> _instances = new List<Item> {};
 
     public Item (string description)
     {
       _description = description;
       _instances.Add(this);
+      _id = _instances.Count;
+    }
+
+    public static Item Find(int searchId)
+    {
+      return _instances[searchId-1];
+    }
+
+    public int GetId()
+    {
+      return _id;
     }
 
     public string GetDescription()
